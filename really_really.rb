@@ -1,12 +1,27 @@
 require './really'
+require 'stringio'
 
-# raise exception on false.really?
-begin
-  (true == false).really?
-rescue Exception => e
-  (e.message == "No way, dude.").really?
+module Kernel
+
+  def capture_stdout
+    out = StringIO.new
+    $stdout = out
+    yield
+    return out.string.chomp
+  ensure
+    $stdout = STDOUT
+  end
+
 end
 
-# give a merit badge on true.really?
-(true == true).really?
+true.really?
 
+output = capture_stdout do
+  false.really?
+end
+(output == "No way, dude.").really?
+
+output = capture_stdout do
+  nil.really?
+end
+(output == "Dude, nil...It's like, zen, y'know?").really?
