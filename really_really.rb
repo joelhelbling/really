@@ -14,14 +14,11 @@ module Kernel
 
 end
 
+puts "\n", %s{If it's true, it's like, "you know it!"}
 true.really?
 
-output = capture_stdout do
-  false.really?
-end
-(output == "No way, dude.").really?
+puts "\n", %s{If it's false it's all, "no way!"}
+(capture_stdout{ false.really? } == "No way, dude.").really?
 
-output = capture_stdout do
-  nil.really?
-end
-(output == "Dude, nil...It's like, zen, y'know?").really?
+puts "\n", %s{If it's nil, it's like "no way" but its also like, "whoa!"}
+(capture_stdout{ nil.really? } == "Dude, nil...It's like, zen, y'know?").really?
