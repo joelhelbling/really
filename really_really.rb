@@ -1,3 +1,5 @@
+require './really'
+
 # raise exception on false.really?
 begin
   (true == false).really?
