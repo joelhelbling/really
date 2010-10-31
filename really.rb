@@ -1,14 +1,14 @@
 class Object
-  def really?(message = "This is kinda unexpected")
+  def really?(message = "This is kinda unexpected", color="")
     message.gsub!(/\?$/, '!')
-    puts message
-    message
+    color, reset = ENV['REALLY_COLOR'] == 'true' ? [color, "\e[0m"] : ['','']
+    puts "#{color}#{message}#{reset}"
   end
 end
 
 class FalseClass
   def really?(message = "No way, dude.")
-    super(message.gsub(/ is /, " is not "))
+    super(message.gsub(/ is /, " is not "), "\e[31m")
   end
 end
 
@@ -20,6 +20,6 @@ end
 
 class TrueClass
   def really?(message = "Yeah, dude, like, totally.")
-    super(message)
+    super(message, "\e[32m")
   end
 end
