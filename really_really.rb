@@ -21,4 +21,16 @@ puts "\n", %s{If it's false it's all, "no way!"}
 (capture_stdout{ false.really? } == "No way, dude.").really?
 
 puts "\n", %s{If it's nil, it's like "no way" but its also like, "whoa!"}
-(capture_stdout{ nil.really? } == "Dude, nil...It's like, zen, y'know?").really?
+(capture_stdout{ nil.really? } == "Dude, nil...It's like, zen.").really?
+
+# alternative messages
+farms_message = "The farm is awesome?"
+
+puts "\n", %s{And sometimes it's true, and it says something different.}
+(capture_stdout{ true.really? farms_message } == "The farm is awesome!").really?
+
+puts "\n", %s{Sometimes it says something different when it's false.}
+(capture_stdout{ false.really? farms_message } == "The farm is not awesome!").really?
+
+puts "\n", %s{Sometimes when it's nil it says something kinda different.}
+(capture_stdout{ nil.really? farms_message } == "The farm ain't exactly awesome!").really?
