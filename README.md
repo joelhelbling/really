@@ -7,11 +7,11 @@ Usage
 -----
 
 ### The Basics
-    (true == true).really?
+    (true == true).really? #=> "Yeah, dude, like, totally."
     
-    (true == false).really?
+    (true == false).really? #=> "No way, dude."
     
-    nil.really?
+    nil.really? #=> "Dude, nil...It's like, zen."
 
 ### Custom Messages
     true.really? "The farm is refreshing?" #=> "The farm is refreshing!"
