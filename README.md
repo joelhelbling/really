@@ -23,10 +23,10 @@ Usage
 Color
 -----
 
-At this point, you can have your test output in color, with passing tests in green, and failing tests in red, if you'll just be a pal and set an environment variable `REALLY_COLOR=true`.  Eventually it'd be really cool if we accepted a command-line parameter, like `--color`.  Well check out the roadmap below.  That's why we're awesome.  We're looking out for you.  Reconize.
+At this point, you can have your test output in color, with passing tests in green, and failing tests in red, if you'll just be a pal and set an environment variable `REALLY_COLOR=true`.  We now accepted a command-line parameter, `--color`.  This toggles color mode on, regardless of the environment variable setting. Well check out the roadmap below.  That's why we're awesome.  We're looking out for you.  Reconize.
 
 Roadmap
 -------
-*   switch on color with `--color` command-line parameter.
+*   switch on color with `--color` command-line parameter. - Completed 22-Nov-2010 by DocOnDev
 *   let `some_string.really?` accept a closure: 
     `"The grass is so green!".really? { false } #=> "The grass is not so green!"`
