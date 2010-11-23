@@ -1,7 +1,7 @@
 class Object
   def really?(message = "This is kinda unexpected", color="")
     message.gsub!(/\?$/, '!')
-    color, reset = ENV['REALLY_COLOR'] == 'true' ? [color, "\e[0m"] : ['','']
+    color, reset = (ARGV[0] == '--color' || ENV['REALLY_COLOR'] == 'true') ? [color, "\e[0m"] : ['','']
     puts "#{color}#{message}#{reset}"
   end
 end
