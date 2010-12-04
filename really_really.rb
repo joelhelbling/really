@@ -17,23 +17,37 @@ module Kernel
 
 end
 
-puts "\n", %s{If it's true, it's like, "you know it!"}
-true.really?
+"If it's true, it's like, totally?".really? { true }
 
-puts "\n", %s{If it's false it's all, "no way!"}
-(!! capture_stdout{ false.really? }.match(/No way, dude\./)).really?
+"If it's false it's all, no way?".really? do
+  !! capture_stdout{ false.really? }.match(/No way, dude\./)
+end
 
-puts "\n", %s{If it's nil, it's like "no way" but its also like, "whoa!"}
-(!! capture_stdout{ nil.really? }.match(/Dude, nil...It's like, zen./)).really?
+"If it's nil, it's like no way but its also like, whoa?".really? do
+  !! capture_stdout{ nil.really? }.match(/Dude, nil...It's like, zen./)
+end
 
 # alternative messages
 farms_message = "The farm is awesome?"
 
-puts "\n", %s{And sometimes it's true, and it says something different.}
-(!! capture_stdout{ true.really? farms_message }.match(/The farm is awesome!/)).really?
+%s{And sometimes it's true, and it says something different?}.to_s.really? do
+  !! capture_stdout{ true.really? farms_message }.match(/The farm is awesome!/)
+end
 
-puts "\n", %s{Sometimes it says something different when it's false.}
-(!! capture_stdout{ false.really? farms_message }.match(/The farm is not awesome!/)).really?
+%s{Sometimes it says something different when it's false?}.to_s.really? do
+  !! capture_stdout{ false.really? farms_message }.match(/The farm is not awesome! FAIL!/)
+end
 
-puts "\n", %s{Sometimes when it's nil it says something kinda different.}
-(!! capture_stdout{ nil.really? farms_message }.match(/The farm ain't exactly awesome!/)).really?
+%s{Sometimes when it's nil it says something kinda different?}.to_s.really? do
+  !! capture_stdout{ nil.really? farms_message }.match(/The farm ain't exactly awesome!/)
+end
+
+%s{We want String#really? to accept a block?}.to_s.really? do
+  std = capture_stdout { "Foo is bar?".really? { true } }
+  !! std.match(/Foo is bar!/)
+end
+%s{And String#really? uses the string as its message?}.to_s.really? do
+  std = capture_stdout { "Bar is foo?".really? { false } }
+  !! std.match(/Bar is not foo! FAIL!/)
+end
+

@@ -14,11 +14,16 @@ Usage
     nil.really? #=> "Dude, nil...It's like, zen."
 
 ### Custom Messages
-    true.really? "The farm is refreshing?" #=> "The farm is refreshing!"
+    true.really? "The farm is refreshing?"  #=> "The farm is refreshing!"
     
     false.really? "The farm is refreshing?" #=> "The farm is not refreshing!"
     
-    nil.really? "The farm is refreshing?" #=> "The farm ain't exactly refreshing!"
+    nil.really? "The farm is refreshing?"   #=> "The farm ain't exactly refreshing!"
+
+### Block Form
+    "The farm is refreshing?".really? { true }  #=> "The farm is refreshing!"
+    
+    "The farm is refreshing?".really? { false } #=> "The farm is not refreshing! FAIL!"
 
 Color
 -----
@@ -32,4 +37,4 @@ Roadmap
 -------
 *   switch on color with `--color` command-line parameter. - Completed 22-Nov-2010 by DocOnDev
 *   let `some_string.really?` accept a closure: 
-    `"The grass is so green!".really? { false } #=> "The grass is not so green!"`
+    `"The grass is so green?".really? { false } #=> "The grass is not so green! FAIL!"` - Completed 03-Dec-2010 by Joel Helbling
