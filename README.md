@@ -23,7 +23,10 @@ Usage
 Color
 -----
 
-At this point, you can have your test output in color, with passing tests in green, and failing tests in red, if you'll just be a pal and set an environment variable `REALLY_COLOR=true`.  We now accepted a command-line parameter, `--color`.  This toggles color mode on, regardless of the environment variable setting. Well check out the roadmap below.  That's why we're awesome.  We're looking out for you.  Reconize.
+At this point, you can have your test output in color, with passing tests in green, and failing tests in red, if
+you'll just be a pal and set an environment variable `REALLY_COLOR=true`.  Alternatively, we now accept a
+command-line parameter, `--color`.  This toggles color mode on, regardless of the environment variable setting.
+Well check out the roadmap below.  That's why we're awesome.  We're looking out for you.  Reconize.
 
 Roadmap
 -------
