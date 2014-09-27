@@ -46,8 +46,35 @@ end
   std = capture_stdout { "Foo is bar?".really? { true } }
   !! std.match(/Foo is bar!/)
 end
+
 %s{And String#really? uses the string as its message?}.to_s.really? do
   std = capture_stdout { "Bar is foo?".really? { false } }
   !! std.match(/Bar is not foo! FAIL!/)
 end
 
+%q{Enumerables! How do they work?  With blocks that like them!}.really? do
+  std = capture_stdout do
+    %w{food fools moon}.really? do |word|
+      word.match /oo/
+    end
+  end
+  !! std.match(/Every single one is awesome!/)
+end
+
+%q{Of course, sometimes nothing goes right.}.really? do
+  std = capture_stdout do
+    %w{grub ghouls clouds}.really? do |word|
+      word.match /oo/
+    end
+  end
+  !! std.match(/totally NOT!  Not even one of them is awesome./)
+end
+
+%q{And sometimes some pass and some fail.}.really? do
+  std = capture_stdout do
+    %w{food fools moon}.really? do |word|
+      !word.match /foo/
+    end
+  end
+  !! std.match(/"special snowflakes": food, fools/)
+end

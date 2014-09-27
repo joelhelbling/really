@@ -36,3 +36,17 @@ class String
     (!! block.call).really? self
   end
 end
+
+module Enumerable
+  def really?(&block)
+    failures = self.reject { |item| !!block.call(item) }
+    case failures
+    when []
+      super "Dude!  Every single one is awesome!", Really::PASS_COLOR
+    when self
+      super "Dude, totally NOT!  Not even one of them is awesome.", Really::FAIL_COLOR
+    else
+      super "Some were cool, but there were some \"special snowflakes\": #{failures.join(', ')}", Really::FAIL_COLOR
+    end
+  end
+end
